@@ -1,7 +1,7 @@
 defaults: &defaults
   resource_class: small
   docker:
-    - image: circleci/node:14-browsers
+    - image: circleci/node:16-browsers
 cache-defaults: &cache-defaults
   keys:
     - -{{ checksum "package-lock.json" }}
