@@ -121,7 +121,7 @@
     "webpack-cli": "^5.1.0"
   },
   "dependencies": {
-    "cottus": "^1.10.13",
-    "fatum": "^1.0.1"
+    "cottus": "1.10.13",
+    "fatum": "1.0.1"
   }
 }
