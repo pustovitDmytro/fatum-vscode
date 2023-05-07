@@ -1,36 +1,61 @@
 {
-  "name": "npm-boilerplate",
+  "name": "fatum",
   "version": "0.0.1",
-  "description": "boilerplate for creating npm packages",
-  "main": "./lib",
+  "displayName": "Fatum",
+  "description": "Generate random data",
+  "main": "./dist/extension.js",
+  "publisher": "dmytro-pustovit",
+  "engines": {
+    "vscode": "^1.55.0",
+    "node": ">=10"
+  },
+  "categories": [
+    "Other"
+  ],
+  "contributes": {
+    "commands": [
+      {
+        "command": "fatum.firstName",
+        "title": "Fatum: firstName"
+      },
+      {
+        "command": "fatum.password",
+        "title": "Fatum: password"
+      },
+      {
+        "command": "fatum.int",
+        "title": "Fatum: integer"
+      }
+    ]
+  },
   "scripts": {
-    "prepare": "babel src --out-dir ./lib --copy-files && husky install",
-    "coveralls": "cat ./reports/coverage/lcov.info | coveralls",
-    "test:security": "npm audit --production && npm run test:lock",
-    "test:lint": "eslint src bin tests --no-error-on-unmatched-pattern",
-    "test:mocha": "mocha --config .mocharc.json 'tests/**/*test.js'",
-    "test:package": "npt test -c .package-tester.json",
-    "test:coverage": "BUILD=0 MODE=test nyc mocha --config .mocharc.json 'tests/**/*test.js'",
-    "test:debt": "jscpd src --config .jscpd.json",
+    "prepare": "husky install",
+    "vscode:prepublish": "npm run package",
+    "compile": "webpack",
+    "watch": "webpack --watch",
+    "package": "webpack --mode production --devtool hidden-source-map",
+    "test-compile": "tsc -p ./",
+    "test-watch": "tsc -watch -p ./",
+    "pretest:e2e": "npm run test-compile",
     "test:lock": "lockfile-lint --path package-lock.json --validate-https --allowed-hosts npm",
-    "coverage-check": "MODE=test nyc check-coverage",
-    "test": "npm run test:lint && npm run test:security && BUILD=1 npm run test:mocha",
+    "test:lint": "eslint src tests --ext ts --no-error-on-unmatched-pattern",
+    "test:security": "npm audit --production && npm run test:lock",
+    "test:e2e": "node ./out/tests/runTest.js",
+    "test:debt": "jscpd src --config .jscpd.json",
+    "test": "npm run test:lint && npm run test:security && npm run test:e2e",
     "sort-deps": "npm remove --save example; npm remove --save-dev example",
     "semantic-release": "npx semantic-release"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/pustovitDmytro/npm-boilerplate.git"
+    "url": "https://github.com/pustovitDmytro/fatum-vscode.git"
   },
   "author": "Dmytro Pustovit",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/pustovitDmytro/npm-boilerplate/issues"
+    "url": "https://github.com/pustovitDmytro/fatum-vscode/issues"
   },
-  "engines": {
-    "node": ">=10"
-  },
-  "homepage": "https://github.com/pustovitDmytro/npm-boilerplate#readme",
+  "homepage": "https://github.com/pustovitDmytro/fatum-vscode#readme",
   "devDependencies": {
     "@babel/cli": "^7.19.3",
     "@babel/core": "^7.20.5",
@@ -46,6 +71,13 @@
     "@commitlint/lint": "^17.3.0",
     "@semantic-release/changelog": "^6.0.2",
     "@semantic-release/git": "^10.0.1",
+    "@types/estree": "^1.0.1",
+    "@types/glob": "^8.1.0",
+    "@types/mocha": "^10.0.1",
+    "@types/node": "^20.1.0",
+    "@types/vscode": "^1.78.0",
+    "@typescript-eslint/eslint-plugin": "^4.14.1",
+    "@typescript-eslint/parser": "^4.14.1",
     "babel-plugin-module-resolver": "^4.1.0",
     "chai": "^4.3.7",
     "chance": "^1.1.9",
@@ -65,7 +97,7 @@
     "eslint-plugin-scanjs-rules": "^0.2.1",
     "eslint-plugin-security": "^1.5.0",
     "eslint-plugin-sonarjs": "^0.17.0",
-    "eslint-plugin-unicorn": "45.0.2",
+    "eslint-plugin-unicorn": "42.0.0",
     "fs-extra": "^11.1.0",
     "husky": "^8.0.2",
     "jscpd": "^3.5.3",
@@ -76,6 +108,18 @@
     "nyc": "^15.1.0",
     "semantic-release": "^19.0.5",
     "semantic-release-telegram": "^1.6.0",
-    "uuid": "^9.0.0"
+    "semantic-release-vsce": "^5.5.9",
+    "source-map-support": "^0.5.21",
+    "ts-loader": "^9.4.2",
+    "typescript": "^5.0.4",
+    "uuid": "^9.0.0",
+    "vsce": "^2.15.0",
+    "vscode-test": "^1.6.1",
+    "webpack": "^5.82.0",
+    "webpack-cli": "^5.1.0"
+  },
+  "dependencies": {
+    "cottus": "^1.10.13",
+    "fatum": "^1.0.1"
   }
 }

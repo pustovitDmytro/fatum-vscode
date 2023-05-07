@@ -11,8 +11,8 @@
             }
         ],
         [
-            "@semantic-release/npm",{
-                "tarballDir": "./"
+            "semantic-release-vsce", {
+                "packageVsix": true
             }
         ],
         [
@@ -24,7 +24,7 @@
         [
             "@semantic-release/github", {
                 "assets": [
-                    { "path": "*.tgz", "label": "npm tarball" }
+                    { "path": "*.vsix" }
                 ]
             }
         ],

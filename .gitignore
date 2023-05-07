@@ -1,11 +1,11 @@
+out
+dist
 node_modules
-etc/*.js
-etc/*.json
-lib/*
+.vscode-test/
+*.vsix
+coverage/*
 tmp/*
 logs/*
 *.log
-*.tgz
 reports/*
 .coveralls.yml
-TODO
