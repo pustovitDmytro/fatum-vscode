@@ -9,6 +9,7 @@
 		"sourceMap": true,
 		"rootDir": "./",
 		"strict": true,   /* enable all strict type-checking options */
+		"resolveJsonModule": true,
 		"esModuleInterop": true,
 
 		/* Additional Checks */

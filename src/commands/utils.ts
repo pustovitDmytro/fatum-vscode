@@ -1,14 +1,16 @@
+/* eslint-disable censor/no-swear */
 import * as vscode from 'vscode';
-import fatum from 'fatum';
+import { isString } from 'myrmidon';
+import logger from '../logger';
 
 const MESSAGES = {
     ERROR_MESSAGE    : 'Error occured',
     EDITOR_NOT_FOUND : 'No editor found'
 };
 
-export function fatumCommandDecorator(
+export function CommandDecorator(
     // eslint-disable-next-line no-undef
-    cb: FatumInsertionHandler,
+    fatumRunner: FatumInsertionHandler,
     opts: { prompt?:any} = {}
 ) {
     return async function () {
@@ -26,27 +28,36 @@ export function fatumCommandDecorator(
                     value       : prompt.defaultValue
                 });
 
+                logger.log('debug', 'received prompt: %s', value);
                 promptedValue = prompt.validate(value);
+                logger.log('info', 'prompt value %s', promptedValue);
             }
 
             if (!editor) {
                 vscode.window.showErrorMessage(MESSAGES.EDITOR_NOT_FOUND);
+                logger.log('error', MESSAGES.EDITOR_NOT_FOUND);
 
                 return;
             }
+
+            const fatumValue = fatumRunner(promptedValue);
+            const asString = isString(fatumValue)
+                ? fatumValue
+                : fatumValue.toString();
+
+            logger.log('info', 'generated %s', fatumValue);
 
             editor.edit(edit => {
                 editor.selections.forEach(selection => {
                     edit.insert(
                         selection.active,
-                        // eslint-disable-next-line callback-return , promise/prefer-await-to-callbacks
-                        cb(fatum, { prompt: promptedValue })
+                        asString
                     );
                 });
             });
         } catch (error) {
-            console.error(error);
             vscode.window.showErrorMessage(MESSAGES.ERROR_MESSAGE);
+            logger.log('error', error);
         }
     };
 }

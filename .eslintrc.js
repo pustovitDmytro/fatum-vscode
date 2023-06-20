@@ -23,8 +23,9 @@ module.exports = {
         'import/no-unresolved'                 : 0, // not works with ts?
 
         'no-unused-vars'                    : 0,
-        '@typescript-eslint/no-unused-vars' : 'error'
-
+        '@typescript-eslint/no-unused-vars' : 'error',
+        'lines-between-class-members'       : 0,
+        'unicorn/expiring-todo-comments'    : 0
     },
     'ignorePatterns' : [
         '**/*.d.ts'
