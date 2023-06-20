@@ -1,3 +1,10 @@
+# [1.1.0](https://github.com/pustovitDmytro/fatum-vscode/compare/v1.0.0...v1.1.0) (2023-06-20)
+
+
+### New
+
+* added new fatum methods ([b13fb34](https://github.com/pustovitDmytro/fatum-vscode/commit/b13fb34a458332bb1cc47582bd45f065b5735690))
+
 # 1.0.0 (2023-05-07)
 
 
