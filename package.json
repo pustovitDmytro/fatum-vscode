@@ -5,6 +5,7 @@
   "description": "Generate random data",
   "main": "./dist/extension.js",
   "publisher": "dmytro-pustovit",
+  "icon": ".docs/logo_128.png",
   "engines": {
     "vscode": "^1.78.0",
     "node": ">=10"
@@ -15,18 +16,71 @@
   "activationEvents": [],
   "contributes": {
     "commands": [
-      {"command": "fatum.domain", "category": "Fatum", "title": "Random: domain"},
-      {"command": "fatum.email", "category": "Fatum", "title": "Random: email"},
-      {"command": "fatum.firstName", "category": "Fatum", "title": "Random: firstName"},
-      {"command": "fatum.fullName", "category": "Fatum", "title": "Random: fullName"},
-      {"command": "fatum.int", "category": "Fatum", "title": "Random: integer"},
-      {"command": "fatum.lastName", "category": "Fatum", "title": "Random: lastName"},
-      {"command": "fatum.nickName", "category": "Fatum", "title": "Random: nickName"},
-      {"command": "fatum.password", "category": "Fatum", "title": "Random: password"},
-      {"command": "fatum.sentence", "category": "Fatum", "title": "Random: sentence"},
-      {"command": "fatum.text", "category": "Fatum", "title": "Random: text"},
-      {"command": "fatum.uniform", "category": "Fatum", "title": "Random: float"},
-      {"command": "fatum.uuid", "category": "Fatum", "title": "Random: uuid"}
+      {
+        "command": "fatum.domain",
+        "category": "Fatum",
+        "title": "Random: domain"
+      },
+      {
+        "command": "fatum.email",
+        "category": "Fatum",
+        "title": "Random: email"
+      },
+      {
+        "command": "fatum.firstName",
+        "category": "Fatum",
+        "title": "Random: firstName"
+      },
+      {
+        "command": "fatum.fullName",
+        "category": "Fatum",
+        "title": "Random: fullName"
+      },
+      {
+        "command": "fatum.int",
+        "category": "Fatum",
+        "title": "Random: integer"
+      },
+      {
+        "command": "fatum.lastName",
+        "category": "Fatum",
+        "title": "Random: lastName"
+      },
+      {
+        "command": "fatum.nickName",
+        "category": "Fatum",
+        "title": "Random: nickName"
+      },
+      {
+        "command": "fatum.password",
+        "category": "Fatum",
+        "title": "Random: password"
+      },
+      {
+        "command": "fatum.sentence",
+        "category": "Fatum",
+        "title": "Random: sentence"
+      },
+      {
+        "command": "fatum.text",
+        "category": "Fatum",
+        "title": "Random: text"
+      },
+      {
+        "command": "fatum.uniform",
+        "category": "Fatum",
+        "title": "Random: float"
+      },
+      {
+        "command": "fatum.uuid",
+        "category": "Fatum",
+        "title": "Random: uuid"
+      },
+      {
+        "command": "fatum.date",
+        "category": "Fatum",
+        "title": "Random: date as ISO string"
+      }
     ]
   },
   "scripts": {
@@ -121,8 +175,8 @@
     "webpack-cli": "^5.1.0"
   },
   "dependencies": {
-    "cottus": "1.10.13",
-    "fatum": "1.1.0",
+    "cottus": "1.11.0",
+    "fatum": "1.2.0",
     "myrmidon": "1.8.1",
     "winston": "3.9.0",
     "winston-vscode": "1.0.0"

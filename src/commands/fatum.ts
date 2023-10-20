@@ -45,6 +45,29 @@ class FloatPrompt extends RangePrompt {
     ]);
 }
 
+class DatePrompt extends RangePrompt {
+    static lastYearPrompt() {
+        const now = new Date();
+        const before = new Date();
+
+        before.setFullYear(before.getFullYear() - 1);
+
+        return `${before.toISOString()};${now.toISOString()}`;
+    }
+    defaultValue = DatePrompt.lastYearPrompt();
+    validator = cottus.compile([
+        'required', { 'attributes' : {
+            'min' : [ 'required', 'date' ],
+            'max' : [ 'required', 'date' ]
+        } }
+    ]);
+    extract(value: string) {
+        const [ min, max ] = value.split(';');
+
+        return { min, max };
+    }
+}
+
 const commands = [
     { id: 'fatum.domain', generate: () => fatum.domain() },
     { id: 'fatum.email', generate: () => fatum.email() },
@@ -57,7 +80,16 @@ const commands = [
     { id: 'fatum.sentence', generate: () => fatum.sentence() },
     { id: 'fatum.text', generate: () => fatum.text() },
     { id: 'fatum.uniform', generate: (p:any) => fatum.uniform(p.min, p.max), prompt: new FloatPrompt() },
-    { id: 'fatum.uuid', generate: () => fatum.uuid() }
+    { id: 'fatum.uuid', generate: () => fatum.uuid() },
+    {
+        id       : 'fatum.date',
+        generate : (p:any) => {
+            const date = fatum.date(p.min, p.max);
+
+            return date.toISOString();
+        },
+        prompt : new DatePrompt()
+    }
 ];
 
 export default commands.map(c => ({

@@ -1,3 +1,4 @@
+![Logo](.docs/logo.jpg "fatum")
 # fatum-vscode
 
 This extention will help you to prettify and manage json logs

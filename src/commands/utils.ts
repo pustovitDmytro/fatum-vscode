@@ -1,4 +1,3 @@
-/* eslint-disable censor/no-swear */
 import * as vscode from 'vscode';
 import { isString } from 'myrmidon';
 import logger from '../logger';
