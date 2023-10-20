@@ -5,7 +5,7 @@
   "description": "Generate random data",
   "main": "./dist/extension.js",
   "publisher": "dmytro-pustovit",
-  "icon": ".docs/logo_128.png",
+	"icon": ".docs/logo_128.jpg",
   "engines": {
     "vscode": "^1.78.0",
     "node": ">=10"
