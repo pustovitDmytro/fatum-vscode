@@ -1,3 +1,14 @@
+# [1.2.0](https://github.com/pustovitDmytro/fatum-vscode/compare/v1.1.0...v1.2.0) (2023-10-20)
+
+
+### Docs
+
+* adds logo ([80aa5eb](https://github.com/pustovitDmytro/fatum-vscode/commit/80aa5eb1759f829b2c146a0bc58170c21e7fe560))
+
+### New
+
+* adds date command ([262d6ef](https://github.com/pustovitDmytro/fatum-vscode/commit/262d6ef945cc8d55e2f8c118316b77871cb15d80))
+
 # [1.1.0](https://github.com/pustovitDmytro/fatum-vscode/compare/v1.0.0...v1.1.0) (2023-06-20)
 
 
