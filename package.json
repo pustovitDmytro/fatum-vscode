@@ -178,7 +178,7 @@
     "cottus": "1.11.0",
     "fatum": "1.2.0",
     "myrmidon": "1.8.1",
-    "winston": "3.9.0",
+    "winston": "3.15.0",
     "winston-vscode": "1.0.0"
   }
 }
